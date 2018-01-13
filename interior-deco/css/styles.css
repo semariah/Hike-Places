@@ -1,16 +1,11 @@
-
-
-.decor {
-  background-color: white;
+.decor{
   font-style: normal;
   font-family: sans-serif;
   border: 2px solid green;
   margin: 12px;
   padding: 4px;
 }
-.kichen {
 
-}
 
 .color1 {
   color: rgba(0, 0, 255, 0.5);
