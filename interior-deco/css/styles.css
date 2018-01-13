@@ -4,6 +4,12 @@
   background-color: white;
   font-style: normal;
   font-family: sans-serif;
+  border: 2px solid green;
+  margin: 12px;
+  padding: 4px;
+}
+.kichen {
+
 }
 
 .color1 {
