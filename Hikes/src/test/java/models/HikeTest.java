@@ -33,7 +33,7 @@ public class HikeTest {
     public void getHikeLengthGetsLengthCorrectly() throws Exception {
         Hike hike = setupNewHike();
         hike.setHikeLength();
-        assertNotEquals(2, hike.getHikeLength());
+        assertEquals(2, hike.getHikeLength());
     }
 
     private Hike setupNewHike() {
