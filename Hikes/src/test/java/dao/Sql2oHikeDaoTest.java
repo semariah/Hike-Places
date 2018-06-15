@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 public class Sql2oHikeDaoTest {
@@ -47,6 +49,50 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
         assertEquals(1, hikeDao.getAll().size());
+    }
+
+    @Test
+    public void noHikesReturnsEmptyList() throws Exception {
+        assertEquals(0, hikeDao.getAll().size());
+    }
+
+
+    @Test
+    public void updateChangesHikeName() throws Exception {
+        String initialName = "janet";
+        Hike hike = setupNewHike();
+        hikeDao.add(hike);
+        hikeDao.update(hike.getId(), "semhar", 2, "oregon");
+        Hike updatedHike = hikeDao.findById(hike.getId());
+        assertNotEquals(initialName, updatedHike.getName());
+    }
+
+    @Test
+    public void updateChangesHikeLength() throws Exception {
+        int initialHikeLength = 3;
+        Hike hike = setupNewHike();
+        hikeDao.add(hike);
+        hikeDao.update(hike.getId(),"janet", 3, "oregon");
+        Hike updatedHike = hikeDao.findById(hike.getId());
+        assertNotEquals(initialHikeLength, updatedHike.getHikeLength());
+    }
+
+    @Test
+    public void updateChangesHikeState() throws Exception {
+        String initialState = "oregon";
+        Hike hike = setupNewHike();
+        hikeDao.add(hike);
+        hikeDao.update(hike.getId(), "janet", 2, "california");
+        Hike updatedHike = hikeDao.findById(hike.getId());
+        assertNotEquals(initialState, updatedHike.getState());
+    }
+
+    @Test
+    public void deleteByIdDeletesCorrectHike() throws Exception {
+        Hike hike = setupNewHike();
+        hikeDao.add(hike);
+        hikeDao.deleteById(hike.getId());
+        assertEquals(0, hikeDao.getAll().size());
     }
 
     private Hike setupNewHike() {

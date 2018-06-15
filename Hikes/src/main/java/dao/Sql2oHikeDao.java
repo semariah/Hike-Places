@@ -1,7 +1,9 @@
 package dao;
 
 import models.Hike;
+import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
 
 import java.util.List;
 
@@ -14,16 +16,34 @@ public class Sql2oHikeDao implements HikeDao{
 
     @Override
     public List<Hike> getAll() {
-        return null;
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM hikes")
+                    .executeAndFetch(Hike.class);
+        }
     }
 
     @Override
     public void add(Hike hike) {
+        String sql = "INSERT INTO hikes (name, hikeLength, state) VALUES (:name, :hikeLength, :state)";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(sql, true)
+                    .bind(hike)
+                    .executeUpdate()
+                    .getKey();
+            hike.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+
 
     }
 
     @Override
     public Hike findById(int id) {
-        return null;
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM hikes WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Hike.class);
+        }
     }
 }
