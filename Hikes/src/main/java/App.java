@@ -33,14 +33,14 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/hikes/new", (request, response) -> {
+        get("/hikes/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Hike> hikes = hikeDao.getAll();
-            model.put("hikes", hikes);
+            //List<Hike> hikes = hikeDao.getAll();
+            //model.put("hikes", hikes);
             return new ModelAndView(model, "newhike-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/hikes/new", (req, res) -> {
+        post("/hikes", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("name");
             int hikeLength = Integer.parseInt(req.queryParams("hikeLength"));
