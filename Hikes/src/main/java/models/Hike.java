@@ -37,4 +37,12 @@ public class Hike {
     public String getState() {
         return state;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
