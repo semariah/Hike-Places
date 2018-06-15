@@ -19,7 +19,7 @@ public class HikeTest {
     @Test
     public void hikeInstantiatesCorrectly() throws Exception {
         Hike hike = setupNewHike();
-        assertNotEquals(true, hike instanceof  Hike);
+        assertEquals(true, hike instanceof  Hike);
     }
 
     private Hike setupNewHike() {
