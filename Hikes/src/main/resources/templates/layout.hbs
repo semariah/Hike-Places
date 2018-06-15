@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}Nature{{/block}}</title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="/teams/new">Add New Hike</a></li>
+    <!--<li role="presentation" class="dropdown">-->
+        <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">-->
+            <!--Hike Menu <span class="caret"></span>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu">-->
+            <!--{{#if hikes}}-->
+                <!--{{#each hikes}}-->
+                    <!--<li><a href="/hikes/{{id}}">{{name}}</a></li>-->
+                    <!--<li><a href="/hikes/{{id}}">{{hikeLength}}</a></li>-->
+                    <!--<li><a href="/hikes/{{id}}">{{state}}</a></li>-->
+                <!--{{/each}}-->
+            <!--{{else}}-->
+                <!--<li><a href="/hikes/new">Add a Hike</a></li>-->
+            <!--{{/if}}-->
+        <!--</ul>-->
+    <!--</li>-->
+</ul>
+
+<div class="container">
+    <div class="page-header">
+        <img src="/images/hike.jpg" width="150%">
+        <h1>Welcome to a Hike web app. <small>A journey into a healthy life!</small></h1>
+    </div>
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+    </div>
+</div>
+{{#block "footer"}}
+    <footer class="footer">
+        <div class="container">
+            <hr>
+            <p class="text-muted">
+                <a href="/hikes/delete"><button class = "btn btn-danger">Delete All hikes</button></a>
+            </p>
+        </div>
+    </footer>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </html>
+{{/block}}
