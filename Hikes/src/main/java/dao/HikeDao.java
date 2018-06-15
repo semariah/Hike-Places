@@ -15,9 +15,9 @@ public interface HikeDao {
     Hike findById(int id);
 
     //Update
-    //void update(int id, name, hikeLength, state)
+    void update(int id, String name, int hikeLength, String state);
 
     // Delete
-    //void deleteById(int id);
-    //void clearAllHikes();
+    void deleteById(int id);
+    void clearAllHikes();
 }

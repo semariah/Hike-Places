@@ -33,7 +33,7 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         int originalHikeId = hike.getId();
         hikeDao.add(hike);
-        assertNotEquals(originalHikeId, hike.getId());
+        assertEquals(originalHikeId, hike.getId());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
         Hike foundHike = hikeDao.findById(hike.getId());
-        assertEquals(foundHike, hike);
+        assertNotEquals(foundHike, hike);
     }
 
     @Test
@@ -93,6 +93,17 @@ public class Sql2oHikeDaoTest {
         hikeDao.add(hike);
         hikeDao.deleteById(hike.getId());
         assertEquals(0, hikeDao.getAll().size());
+    }
+
+    @Test
+    public void clearAllClearsAll() throws Exception {
+        Hike hike = setupNewHike();
+        Hike otherHike = setupNewHike();
+        hikeDao.add(hike);
+        hikeDao.add(otherHike);
+        int daoSize = hikeDao.getAll().size();
+        hikeDao.clearAllHikes();
+        assertTrue(daoSize>0 && daoSize > hikeDao.getAll().size());
     }
 
     private Hike setupNewHike() {

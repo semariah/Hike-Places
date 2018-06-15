@@ -46,4 +46,47 @@ public class Sql2oHikeDao implements HikeDao{
                     .executeAndFetchFirst(Hike.class);
         }
     }
+
+    @Override
+    public void update(int id, String name, int hikeLength, String state) {
+        String sql = "UPDATE hikes SET (name, hikeLength, sate) = (:name, :hikeLength, :state) WHERE id=:id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("hikeLength",  hikeLength)
+                    .addParameter("state", state)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from hikes WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+
+    }
+
+    @Override
+    public void clearAllHikes() {
+        String sql = "DELETE from hikes";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+
+
+
 }
