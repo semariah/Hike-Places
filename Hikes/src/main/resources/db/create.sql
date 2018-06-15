@@ -7,3 +7,8 @@ CREATE TABLE IF NOT EXISTS hikes (
     state VARCHAR,
 
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    id int PRIMARY KEY auto_increment,
+    name VARCHAR,
+);
