@@ -9,7 +9,7 @@ public class UserTest {
     public void getNameGetsNameCorrectly() {
         User user = setupNewUser();
         user.setName("semhar");
-        assertNotEquals("semhar", user.getName());
+        assertEquals("semhar", user.getName());
     }
 
     private User setupNewUser() {
