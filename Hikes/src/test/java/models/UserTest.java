@@ -12,6 +12,13 @@ public class UserTest {
         assertEquals("semhar", user.getName());
     }
 
+    @Test
+    public void getIdGetsIdCorrectly() {
+        User user = setupNewUser();
+        user.setId(1);
+        assertEquals("semhar", user.getId());
+    }
+
     private User setupNewUser() {
         return new User ("semhar", 1);
     }
