@@ -61,18 +61,18 @@ public class App {
             int idOfHikeToEdit = Integer.parseInt(req.params("id"));
             Hike editHike = hikeDao.findById(idOfHikeToEdit);
             model.put("editHike", editHike);
-            return new ModelAndView(model, "hike-form.hbs");
+            return new ModelAndView(model, "newhike-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 
         post("/hikes/:id/update", (req, res) -> {
+            int idOfHikeToEdit = Integer.parseInt(req.params("id"));
             String name = req.queryParams("name");
             int hikeLength = Integer.parseInt(req.queryParams("hikeLength"));
             String state = req.queryParams("state");
-            int idOfHikeToEdit = Integer.parseInt(req.params("id"));
             hikeDao.update(idOfHikeToEdit, name, hikeLength, state);
-            res.redirect("/hikes/" + idOfHikeToEdit);
-            halt();
+            res.redirect("/");
+            //halt();
             return null;
         }, new HandlebarsTemplateEngine());
 

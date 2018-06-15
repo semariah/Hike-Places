@@ -1,4 +1,20 @@
 {{#partial "content"}}
+    {{#if editHike}}
+        <h4>Edit Hike</h4>
+        <hr>
+        <form action="/hikes/{{ediHike.id}}/update" method="post">
+            <label for="name"> Edit Name </label>
+            <input id="name" name="name" type="text" value="{{editHike.name}}">
+            <br>
+            <label for="hikeLength"> Hike Length (in miles) </label>
+            <input id="hikeLength" name="hikeLength" type="number" value="{{editHike.hikeLength}}">
+            <br>
+            <label for="state"> State </label>
+            <input id="state" name="state" type="text" value="{{editHike.state}}">  <button type="submit" class="btn btn-info">Edit Hike</button>
+            <br>
+        </form>
+
+    {{else}}
 
     <h1>Add a new Hike!</h1>
 
@@ -11,6 +27,7 @@
         <input id="state" name="state" type="text">
         <button type="submit" class="btn btn-success">Add Hike</button>
     </form>
+        {{/if}}
 {{/partial}}
 
 {{> layout.hbs}}
