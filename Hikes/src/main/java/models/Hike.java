@@ -7,7 +7,7 @@ public class Hike {
     private  String state;
     private int  id;
 
-    public Hike(String name, int hikeLength, String oregon) {
+    public Hike(String name, int hikeLength, String state) {
         this.name = name;
         this.hikeLength = hikeLength;
         this.state = state;
