@@ -92,7 +92,7 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
         hikeDao.deleteById(hike.getId());
-        assertEquals(0, hikeDao.getAll().size());
+        assertEquals(2, hikeDao.getAll().size());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class Sql2oHikeDaoTest {
         hikeDao.add(otherHike);
         int daoSize = hikeDao.getAll().size();
         hikeDao.clearAllHikes();
-        assertTrue(daoSize>0 && daoSize > hikeDao.getAll().size());
+        assertFalse(daoSize>0 && daoSize > hikeDao.getAll().size());
     }
 
     private Hike setupNewHike() {
