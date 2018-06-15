@@ -1,0 +1,13 @@
+{{#partial "content"}}
+    <p><strong> Name:</strong> {{name}}</p>
+    <p><strong>Hike Length:</strong> {{hikeLength}} miles</p>
+    <p><strong>State:</strong> {{state}}</p>
+
+
+    <a href="/hikes/{{hike.id}}/update"><button class = "btn btn-info">Edit Hike</button></a>
+
+    <a href="/hikes/{{hike.id}}/delete"><button class = "btn btn-danger">Delete Hike</button></a>
+
+
+{{/partial}}
+{{> layout.hbs}}

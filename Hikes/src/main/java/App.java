@@ -28,15 +28,11 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Hike> hikes = hikeDao.getAll();
             model.put("hikes", hikes);
-            //List<Member> members = memberDao.getAll();
-            //model.put("members", members);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/hikes/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            //List<Hike> hikes = hikeDao.getAll();
-            //model.put("hikes", hikes);
             return new ModelAndView(model, "newhike-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -49,6 +45,14 @@ public class App {
             hikeDao.add(newHike);
             model.put("hike", newHike);
             return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/hikes/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHikeToFind = Integer.parseInt(req.params("id"));
+            Hike foundHike = hikeDao.findById(idOfHikeToFind);
+            model.put("hike", foundHike);
+            return new ModelAndView(model, "hike-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
