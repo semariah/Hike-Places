@@ -47,13 +47,6 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/hikes/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfHikeToFind = Integer.parseInt(req.params("id"));
-            Hike foundHike = hikeDao.findById(idOfHikeToFind);
-            model.put("hike", foundHike);
-            return new ModelAndView(model, "hike-detail.hbs");
-        }, new HandlebarsTemplateEngine());
 
 
         get("/hikes/:id/update", (req, res) -> {
@@ -71,11 +64,37 @@ public class App {
             int hikeLength = Integer.parseInt(req.queryParams("hikeLength"));
             String state = req.queryParams("state");
             hikeDao.update(idOfHikeToEdit, name, hikeLength, state);
-            res.redirect("/");
-            //halt();
+            res.redirect("/hikes/" + idOfHikeToEdit);
+            halt();
             return null;
         }, new HandlebarsTemplateEngine());
 
+
+        get("/hikes/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            hikeDao.clearAllHikes();
+            res.redirect("/");
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        get("/hikes/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHikeToDelete = Integer.parseInt(req.params("id"));
+            hikeDao.deleteById(idOfHikeToDelete);
+            res.redirect("/");
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/hikes/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHikeToFind = Integer.parseInt(req.params("id"));
+            Hike foundHike = hikeDao.findById(idOfHikeToFind);
+            model.put("hike", foundHike);
+            return new ModelAndView(model, "hike-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
 
