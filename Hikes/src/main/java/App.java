@@ -56,6 +56,28 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        get("/hikes/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHikeToEdit = Integer.parseInt(req.params("id"));
+            Hike editHike = hikeDao.findById(idOfHikeToEdit);
+            model.put("editHike", editHike);
+            return new ModelAndView(model, "hike-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/hikes/:id/update", (req, res) -> {
+            String name = req.queryParams("name");
+            int hikeLength = Integer.parseInt(req.queryParams("hikeLength"));
+            String state = req.queryParams("state");
+            int idOfHikeToEdit = Integer.parseInt(req.params("id"));
+            hikeDao.update(idOfHikeToEdit, name, hikeLength, state);
+            res.redirect("/hikes/" + idOfHikeToEdit);
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
+
 
     }
 
