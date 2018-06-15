@@ -55,6 +55,8 @@ public class App {
             return new ModelAndView(model, "hike-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+
     }
 
 }
