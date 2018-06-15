@@ -29,4 +29,12 @@ public class Hike {
     public int getHikeLength() {
         return hikeLength;
     }
+
+    public void setState() {
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
 }

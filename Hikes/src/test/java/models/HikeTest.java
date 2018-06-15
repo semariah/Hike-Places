@@ -36,6 +36,14 @@ public class HikeTest {
         assertEquals(2, hike.getHikeLength());
     }
 
+    @Test
+    public void getStateGetsStateCorrectly() throws Exception {
+        Hike hike = setupNewHike();
+        hike.setState();
+        assertEquals("oregon", hike.getState());
+    }
+
+
     private Hike setupNewHike() {
         return new Hike("multnomah falls", 2, "oregon");
     }
