@@ -40,6 +40,17 @@ public class App {
             return new ModelAndView(model, "newhike-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/hikes/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = req.queryParams("name");
+            int hikeLength = Integer.parseInt(req.queryParams("hikeLength"));
+            String state = req.queryParams("state");
+            Hike newHike = new Hike(name, hikeLength, state);
+            hikeDao.add(newHike);
+            model.put("hike", newHike);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 
 }
