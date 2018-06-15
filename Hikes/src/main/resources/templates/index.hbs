@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <h1>Hike list</h1>
+
+    {{#if hikes}}
+        {{#each hikes}}
+            <h3>Current hike:</h3>
+            <p><strong> name:</strong> {{name}}</p>
+            <p><strong>Hike Length:</strong> {{hikeLength}}</p>
+            <p><a href="/hikes/{{id}}">Read more</a></p>
+        {{/each}}
+    {{else}}
+        <p>There are No current Hikes to display!</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

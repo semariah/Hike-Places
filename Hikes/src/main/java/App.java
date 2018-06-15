@@ -33,6 +33,13 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/hikes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Hike> hikes = hikeDao.getAll();
+            model.put("hikes", hikes);
+            return new ModelAndView(model, "newhike-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 
 }
