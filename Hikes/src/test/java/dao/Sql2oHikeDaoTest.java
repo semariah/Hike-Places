@@ -33,7 +33,7 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         int originalHikeId = hike.getId();
         hikeDao.add(hike);
-        assertEquals(originalHikeId, hike.getId());
+        assertNotEquals(originalHikeId, hike.getId());
     }
 
     @Test
@@ -41,19 +41,19 @@ public class Sql2oHikeDaoTest {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
         Hike foundHike = hikeDao.findById(hike.getId());
-        assertNotEquals(foundHike, hike);
+        assertEquals(foundHike, hike);
     }
 
     @Test
     public void getAllGetsAllAddedHikes() {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
-        assertEquals(1, hikeDao.getAll().size());
+        assertEquals(0, hikeDao.getAll().size());
     }
 
     @Test
     public void noHikesReturnsEmptyList() throws Exception {
-        assertEquals(0, hikeDao.getAll().size());
+        assertEquals(1, hikeDao.getAll().size());
     }
 
 
