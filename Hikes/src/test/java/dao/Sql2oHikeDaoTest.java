@@ -48,12 +48,12 @@ public class Sql2oHikeDaoTest {
     public void getAllGetsAllAddedHikes() {
         Hike hike = setupNewHike();
         hikeDao.add(hike);
-        assertEquals(0, hikeDao.getAll().size());
+        assertEquals(1, hikeDao.getAll().size());
     }
 
     @Test
     public void noHikesReturnsEmptyList() throws Exception {
-        assertEquals(1, hikeDao.getAll().size());
+        assertEquals(0, hikeDao.getAll().size());
     }
 
 
