@@ -16,7 +16,7 @@ public class UserTest {
     public void getIdGetsIdCorrectly() {
         User user = setupNewUser();
         user.setId(1);
-        assertEquals("semhar", user.getId());
+        assertEquals(1, user.getId());
     }
 
     private User setupNewUser() {
