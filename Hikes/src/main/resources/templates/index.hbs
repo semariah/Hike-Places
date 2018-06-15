@@ -4,8 +4,9 @@
     {{#if hikes}}
         {{#each hikes}}
             <h3>Current hike:</h3>
-            <p><strong> name:</strong> {{name}}</p>
-            <p><strong>Hike Length:</strong> {{hikeLength}}</p>
+            <p><strong> Name:</strong> {{name}}</p>
+            <p><strong>Hike Length:</strong> {{hikeLength}} miles</p>
+            <p><strong>State:</strong> {{state}}</p>
             <p><a href="/hikes/{{id}}">Read more</a></p>
         {{/each}}
     {{else}}
