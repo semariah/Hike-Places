@@ -22,6 +22,13 @@ public class HikeTest {
         assertEquals(true, hike instanceof  Hike);
     }
 
+    @Test
+    public void getNameGetsNameCorrectly() {
+        Hike hike = setupNewHike();
+        hike.setName();
+        assertNotEquals("multnomah falls", hike.getName());
+    }
+
     private Hike setupNewHike() {
         return new Hike("multnomah falls", 2, "oregon");
     }
