@@ -23,10 +23,17 @@ public class HikeTest {
     }
 
     @Test
-    public void getNameGetsNameCorrectly() {
+    public void getNameGetsNameCorrectly() throws Exception {
         Hike hike = setupNewHike();
         hike.setName();
         assertEquals("multnomah falls", hike.getName());
+    }
+
+    @Test
+    public void getHikeLengthGetsLengthCorrectly() throws Exception {
+        Hike hike = setupNewHike();
+        hike.setHikeLength();
+        assertNotEquals(2, hike.getHikeLength());
     }
 
     private Hike setupNewHike() {

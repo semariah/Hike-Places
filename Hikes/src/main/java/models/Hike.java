@@ -21,4 +21,12 @@ public class Hike {
     public String getName() {
         return name;
     }
+
+    public void setHikeLength() {
+        this.hikeLength = hikeLength;
+    }
+
+    public int getHikeLength() {
+        return hikeLength;
+    }
 }
