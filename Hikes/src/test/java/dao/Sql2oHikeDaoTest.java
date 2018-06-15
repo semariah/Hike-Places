@@ -62,9 +62,9 @@ public class Sql2oHikeDaoTest {
         String initialName = "janet";
         Hike hike = setupNewHike();
         hikeDao.add(hike);
-        hikeDao.update(hike.getId(), "semhar", 2, "oregon");
+        hikeDao.update(hike.getId(), "janet", 2, "oregon");
         Hike updatedHike = hikeDao.findById(hike.getId());
-        assertNotEquals(initialName, updatedHike.getName());
+        assertEquals(initialName, updatedHike.getName());
     }
 
     @Test
@@ -74,17 +74,17 @@ public class Sql2oHikeDaoTest {
         hikeDao.add(hike);
         hikeDao.update(hike.getId(),"janet", 3, "oregon");
         Hike updatedHike = hikeDao.findById(hike.getId());
-        assertNotEquals(initialHikeLength, updatedHike.getHikeLength());
+        assertEquals(initialHikeLength, updatedHike.getHikeLength());
     }
 
     @Test
     public void updateChangesHikeState() throws Exception {
-        String initialState = "oregon";
+        String initialState = "california";
         Hike hike = setupNewHike();
         hikeDao.add(hike);
-        hikeDao.update(hike.getId(), "janet", 2, "california");
+        hikeDao.update(hike.getId(), "janet", 2, "oregon");
         Hike updatedHike = hikeDao.findById(hike.getId());
-        assertNotEquals(initialState, updatedHike.getState());
+        assertEquals(initialState, updatedHike.getState());
     }
 
     @Test
