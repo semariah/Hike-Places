@@ -49,7 +49,7 @@ public class Sql2oHikeDao implements HikeDao{
 
     @Override
     public void update(int id, String name, int hikeLength, String state) {
-        String sql = "UPDATE hikes SET (name, hikeLength, sate) = (:name, :hikeLength, :state) WHERE id=:id";
+        String sql = "UPDATE hikes SET (name, hikeLength, state) = (:name, :hikeLength, :state) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("name", name)

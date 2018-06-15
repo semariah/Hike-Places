@@ -2,7 +2,7 @@
     {{#if editHike}}
         <h4>Edit Hike</h4>
         <hr>
-        <form action="/hikes/{{ediHike.id}}/update" method="post">
+        <form action="/hikes/{{editHike.id}}/update" method="post">
             <label for="name"> Edit Name </label>
             <input id="name" name="name" type="text" value="{{editHike.name}}">
             <br>
