@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS hikes (
 
 );
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS visitors (
     id int PRIMARY KEY auto_increment,
     name VARCHAR,
 );

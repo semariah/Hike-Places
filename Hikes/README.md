@@ -6,13 +6,13 @@
 
 ## Description
 
- _This web app is a hiking app Java. It prompts the user with several inputs of user name, hike length and the state/place of hiking. It will also allow user to make an account. The user will be able to edit and delete all info while making a new hike and an account._
+ _This web app is a hiking app Java. It prompts the visitor with several inputs of visitor name, hike length and the state/place of hiking. It will also allow visitor to make an account. The visitor will be able to edit and delete all info while making a new hike and an account._
 
  ## Specs
 
  Behaviour | Input | output
  |---------|-------|-------|
- Accept user name | semhar | semhar
+ Accept visitor name | semhar | semhar
  Accept hike length| 2 | 2 miles
  
 

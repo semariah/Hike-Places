@@ -21,7 +21,7 @@ public class App {
         String connectionString = "jdbc:h2:~/hike.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oHikeDao hikeDao = new Sql2oHikeDao(sql2o);
-        //Sql2oUserDao userDao = new Sql2oUserDao(sql2o);
+        //Sql2oVisitorDao visitorDao = new Sql2oVisitorDao(sql2o);
 
 
         get("/", (request, response) -> {
