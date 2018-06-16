@@ -110,6 +110,43 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        get("/visitors/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfVisitorToEdit = Integer.parseInt(req.params("id"));
+            Visitor editVisitor = visitorDao.findById(idOfVisitorToEdit);
+            model.put("editVisitor", editVisitor);
+            return new ModelAndView(model, "visitor-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/visitors/:id/update", (req, res) -> {
+            int idOfVisitorToEdit = Integer.parseInt(req.params("id"));
+            String name = req.queryParams("name");
+            visitorDao.update(idOfVisitorToEdit, name);
+            res.redirect("/visitors/" + idOfVisitorToEdit);
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/visitors/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            visitorDao.clearAllVisitors();
+            res.redirect("/");
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        get("/visitors/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfVisitorToDelete = Integer.parseInt(req.params("id"));
+            visitorDao.deleteById(idOfVisitorToDelete);
+            res.redirect("/");
+            halt();
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
         get("/visitors/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfVisitorToFind = Integer.parseInt(req.params("id"));

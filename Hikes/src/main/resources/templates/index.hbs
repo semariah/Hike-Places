@@ -19,9 +19,10 @@
     {{#if visitors}}
         {{#each visitor}}
             <h3>Current Visitors:</h3>
-            <p><a href="/visitors/{{id}}"></a>{{name}}</p>
+            <p><strong> Visitor Name:</strong> {{name}}</p>
+            <p><a href="/visitors/{{id}}">See Detail</a></p>
         {{/each}}
-        {{else}}
+    {{else}}
         <p>There are no visitors registered yet!</p>
     {{/if}}
 

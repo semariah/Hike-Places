@@ -1,12 +1,24 @@
 {{#partial "content"}}
+    {{#if editVisitor}}
 
-    <h1>Add a new Hike!</h1>
+        <h4>Edit Visitor</h4>
+        <hr>
+        <form action="/visitors/{{editVisitor.id}}/update" method="post">
+            <label for="name"> Edit Name </label>
+            <input id="name" name="name" type="text" value="{{editVisitor.name}}">
+            <br>
+        </form>
+
+    {{else}}
+
+    <h1>Add a new Visitor!</h1>
 
     <form action="/visitors/new" method="post">
         <label for="name"> Visitor Name </label>
         <input id="name" name="name" type="text">
         <button type="submit" class="btn btn-success">Add Visitor</button>
     </form>
+    {{/if}}
 {{/partial}}
 
 {{> layout.hbs}}
