@@ -1,5 +1,4 @@
 package dao;
-
 import models.Visitor;
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +9,7 @@ import org.junit.*;
 
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 public class Sql2oVisitorDaoTest {
@@ -35,7 +35,7 @@ public class Sql2oVisitorDaoTest {
         Visitor visitor = setupNewVisitor();
         int originalVisitorId = visitor.getId();
         visitorDao.add(visitor);
-        assertEquals(originalVisitorId, visitor.getId());
+        assertNotEquals(originalVisitorId, visitor.getId());
     }
 
     @Test
@@ -50,12 +50,12 @@ public class Sql2oVisitorDaoTest {
     public void getAllGetsAllAddedVisitors() {
         Visitor visitor = setupNewVisitor();
         visitorDao.add(visitor);
-        assertNotEquals(1, visitorDao.getAll().size());
+        assertEquals(1, visitorDao.getAll().size());
     }
 
     @Test
     public void noVisitorsReturnsEmptyList() throws Exception {
-        assertNotEquals(0, visitorDao.getAll().size());
+        assertEquals(0, visitorDao.getAll().size());
     }
 
 
@@ -66,7 +66,7 @@ public class Sql2oVisitorDaoTest {
         visitorDao.add(visitor);
         visitorDao.update(visitor.getId(), "betty");
         Visitor updatedVisitor = visitorDao.findById(visitor.getId());
-        assertEquals(initialName, updatedVisitor.getName());
+        assertNotEquals(initialName, updatedVisitor.getName());
     }
 
 
@@ -75,7 +75,7 @@ public class Sql2oVisitorDaoTest {
         Visitor visitor = setupNewVisitor();
         visitorDao.add(visitor);
         visitorDao.deleteById(visitor.getId());
-        assertNotEquals(0, visitorDao.getAll().size());
+        assertEquals(0, visitorDao.getAll().size());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class Sql2oVisitorDaoTest {
         visitorDao.add(otherVisitor);
         int daoSize = visitorDao.getAll().size();
         visitorDao.clearAllVisitors();
-        assertFalse(daoSize>0 && daoSize > visitorDao.getAll().size());
+        assertTrue(daoSize>0 && daoSize > visitorDao.getAll().size());
     }
 
     

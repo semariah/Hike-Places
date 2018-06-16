@@ -73,7 +73,7 @@ public class Sql2oVisitorDao implements VisitorDao{
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
-        } 
+        }
 
     }
 
