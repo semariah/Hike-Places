@@ -1,7 +1,9 @@
 
 
 import dao.Sql2oHikeDao;
+import dao.Sql2oVisitorDao;
 import models.Hike;
+import models.Visitor;
 import org.sql2o.Sql2o;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +23,7 @@ public class App {
         String connectionString = "jdbc:h2:~/hike.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oHikeDao hikeDao = new Sql2oHikeDao(sql2o);
-        //Sql2oVisitorDao visitorDao = new Sql2oVisitorDao(sql2o);
+        Sql2oVisitorDao visitorDao = new Sql2oVisitorDao(sql2o);
 
 
         get("/", (request, response) -> {
@@ -86,6 +88,16 @@ public class App {
             halt();
             return null;
         }, new HandlebarsTemplateEngine());
+
+
+        get("/visitors/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Visitor> users = visitorDao.getAll();
+            model.put("users", users);
+            return new ModelAndView(model, "visitor-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 
 
         get("/hikes/:id", (req, res) -> {

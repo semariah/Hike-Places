@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 public class Sql2oHikeDaoTest {
     private Sql2oHikeDao hikeDao;
+    private Sql2oVisitorDao visitorDao;
     private Connection conn;
 
     @Before
@@ -19,6 +20,7 @@ public class Sql2oHikeDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         hikeDao = new Sql2oHikeDao(sql2o);
+        visitorDao = new Sql2oVisitorDao(sql2o);
         conn = sql2o.open();
     }
 
