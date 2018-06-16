@@ -4,9 +4,8 @@ public class Visitor {
     private String name;
     private int id;
 
-    public Visitor(String name, int id) {
+    public Visitor(String name) {
         this.name = name;
-        this.id = id;
     }
 
     public int getId() {

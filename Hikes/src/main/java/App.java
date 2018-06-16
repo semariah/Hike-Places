@@ -98,6 +98,18 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        post("/visitors/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            //List<Visitor> allVisitors = visitorDao.getAll();
+            //model.put("visitors", allVisitors);
+            String name = request.queryParams("name");
+            Visitor newVisitor = new Visitor(name);
+            visitorDao.add(newVisitor);
+            model.put("visitor", newVisitor);
+            return new ModelAndView(model, "success-visitor.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 
 
         get("/hikes/:id", (req, res) -> {
@@ -106,6 +118,15 @@ public class App {
             Hike foundHike = hikeDao.findById(idOfHikeToFind);
             model.put("hike", foundHike);
             return new ModelAndView(model, "hike-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/visitors/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfVisitorToFind = Integer.parseInt(req.params("id"));
+            Visitor foundVisitor = visitorDao.findById(idOfVisitorToFind);
+            model.put("visitor", foundVisitor);
+            return new ModelAndView(model, "visitor-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
 

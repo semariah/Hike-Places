@@ -1,0 +1,12 @@
+{{#partial "content"}}
+
+    <h1>Add a new Hike!</h1>
+
+    <form action="/visitors/new" method="post">
+        <label for="name"> Visitor Name </label>
+        <input id="name" name="name" type="text">
+        <button type="submit" class="btn btn-success">Add Visitor</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

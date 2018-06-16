@@ -8,6 +8,7 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql2oHikeDao implements HikeDao{
+
     private final Sql2o sql2o;
 
     public Sql2oHikeDao(Sql2o sql2o){

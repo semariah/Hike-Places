@@ -1,16 +1,28 @@
 {{#partial "content"}}
-    <h1>Hike list</h1>
+    <h2>Hike list</h2>
 
     {{#if hikes}}
         {{#each hikes}}
             <h3>Current hike:</h3>
-            <p><strong> Name:</strong> {{name}}</p>
+            <p><strong> Hike Name:</strong> {{name}}</p>
             <p><strong>Hike Length:</strong> {{hikeLength}} miles</p>
             <p><strong>State:</strong> {{state}}</p>
             <p><a href="/hikes/{{id}}">Read more</a></p>
         {{/each}}
     {{else}}
         <p>There are No current Hikes to display!</p>
+    {{/if}}
+    <hr>
+
+    <h2>Visitor List</h2>
+
+    {{#if visitors}}
+        {{#each visitor}}
+            <h3>Current Visitors:</h3>
+            <p><a href="/visitors/{{id}}"></a><strong>Name: </strong>{{name}}</p>
+        {{/each}}
+        {{else}}
+        <p>There are no visitors registered yet!</p>
     {{/if}}
 
 {{/partial}}

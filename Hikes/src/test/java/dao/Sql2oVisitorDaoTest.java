@@ -45,7 +45,7 @@ public class Sql2oVisitorDaoTest {
         Visitor visitor = setupNewVisitor();
         visitorDao.add(visitor);
         Visitor foundVisitor = visitorDao.findById(visitor.getId());
-        assertEquals(visitor, foundVisitor);
+        assertEquals(foundVisitor, visitor);
     }
 
     @Test
@@ -93,6 +93,6 @@ public class Sql2oVisitorDaoTest {
 
     
     private Visitor setupNewVisitor() {
-        return new Visitor("betty", 2);
+        return new Visitor("betty");
     }
 }

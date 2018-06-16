@@ -20,6 +20,6 @@ public class VisitorTest {
     }
 
     private Visitor setupNewVisitor() {
-        return new Visitor("semhar", 1);
+        return new Visitor("semhar");
     }
 }
