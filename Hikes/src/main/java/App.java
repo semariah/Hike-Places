@@ -110,6 +110,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        get("/visitors/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfVisitorToFind = Integer.parseInt(req.params("id"));
+            Visitor foundVisitor = visitorDao.findById(idOfVisitorToFind);
+            model.put("visitor", foundVisitor);
+            return new ModelAndView(model, "visitor-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
         get("/hikes/:id", (req, res) -> {
@@ -121,13 +128,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        get("/visitors/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfVisitorToFind = Integer.parseInt(req.params("id"));
-            Visitor foundVisitor = visitorDao.findById(idOfVisitorToFind);
-            model.put("visitor", foundVisitor);
-            return new ModelAndView(model, "visitor-detail.hbs");
-        }, new HandlebarsTemplateEngine());
 
 
 
