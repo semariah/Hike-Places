@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import './App.css'
+import App from './components/App.css'
 import ClientList from './Client/ClientList'
-import Error404 from './Error404'
+
 
 function App(){
   return (
