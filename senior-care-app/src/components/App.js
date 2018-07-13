@@ -1,20 +1,19 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
-import ClientControl from './Client/ClientControl'
-import ClientList from './Client/ClientList'
+import Home from './home/Home'
+import ClientControl from './client/ClientControl'
+
 
 
 function App(){
   return (
     <div>
       <div className="App">Senior Care App</div>
-      <div>
         <Switch>
-          <Route exact path='/' component={ClientList} />
+          <Route exact path='/' component={Home} />
           <Route path='/newclient' component={ClientControl} />
         </Switch>
-      </div>
     </div>
   );
 };
