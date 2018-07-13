@@ -1,9 +1,20 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 import './App.css'
 import ClientList from './Client/ClientList'
+import Error404 from './Error404'
 
-const App = () => {
-  return (<div className="App">Senior Care App</div>);
+function App(){
+  return (
+    <div>
+      <div className="App">Senior Care App</div>
+      <div>
+        <Switch>
+          <Route exact path='/' component={ClientList} />
+        </Switch>
+      </div>
+    </div>
+  );
 };
 
 export default App;
