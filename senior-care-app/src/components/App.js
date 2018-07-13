@@ -9,11 +9,10 @@ import ClientControl from './client/ClientControl'
 function App(){
   return (
     <div>
-      <div className="App">Senior Care App</div>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/newclient' component={ClientControl} />
-        </Switch>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/newclient' component={ClientControl} />
+      </Switch>
     </div>
   );
 };

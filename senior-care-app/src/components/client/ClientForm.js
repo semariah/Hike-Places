@@ -23,3 +23,5 @@ function ClientForm(){
     </div>
   );
 }
+
+export default ClientForm;

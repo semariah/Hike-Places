@@ -14,10 +14,10 @@ function Client(props){
 }
 
 Client.propTypes = {
-  name: PropTypes.string,
-  address: PropTypes.string,
-  tel: PropTypes.string,
-  service: PropTypes.string
+  name: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  tel: PropTypes.string.isRequired,
+  service: PropTypes.string.isRequired
 }
 
 export default Client
