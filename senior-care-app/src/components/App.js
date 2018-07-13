@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
+import ClientControl from './Client/ClientControl'
 import ClientList from './Client/ClientList'
 
 
@@ -11,6 +12,7 @@ function App(){
       <div>
         <Switch>
           <Route exact path='/' component={ClientList} />
+          <Route path='/newclient' component={ClientControl} />
         </Switch>
       </div>
     </div>

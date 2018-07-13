@@ -22,11 +22,11 @@ function ClientList(){
     <div>
         <hr/>
         {masterClientList.map((client, index) =>
-          <Client name={client.names}
+          <Client name={client.name}
             address={client.address}
             tel={client.tel}
             service={client.service}
-            ket={index}/>
+            key={index}/>
         )}
       </div>
 
