@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import ClientList from './Client/ClientList'
 
 const App = () => {
   return (<div className="App">Senior Care App</div>);
