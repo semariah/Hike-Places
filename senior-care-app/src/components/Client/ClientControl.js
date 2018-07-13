@@ -1,4 +1,7 @@
 import React from 'react';
+import ClientForm from './ClientForm'
+import ConfirmationQuestions from './ConfirmationQuestions';
+
 
 class ClientControl extends React.Component {
 
@@ -7,19 +10,24 @@ class ClientControl extends React.Component {
     this.state = {
       formVisibleOnPage: false
     };
-    this.handleClick = this.handleClick.bind(this)
+    this.handleTroubleshootingConfirmation = this.handleTroubleshootingConfirmation.bind(this)
   }
 
-  handleClick(){
+  handleTroubleshootingConfirmation(){
     this.setState({formVisibleOnPage: true});
-    console.log('formVisibleOnPage is currently set to:' + this.state.formVisibleOnPage);
+
   }
 
   render(){
+    let currentlyVisibleContent = null;
+    if (this.state.formVisibleOnPage){
+      currentlyVisibleContent = <ClientForm />;
+    } else {
+      currentlyVisibleContent = <ConfirmationQuestions onTroubleshootingConfirmation={this.handleTroubleshootingConfirmation} />;
+    }
     return (
       <div>
-        <p>This is the ClientControl component!</p>
-        <strong onClick={this.handleClick}>Click me to change my state!</strong>
+        {currentlyVisibleContent}
       </div>
     );
   }
