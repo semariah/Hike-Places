@@ -1,15 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function Client(){
+function Client(props){
   return(
     <div>
-      <h3>Thomaas</h3>
-      <h6>NE Beech portland</h6>
-      <h6>tel: 971 234 5678</h6>
-      <h6>service needed: home making</h6>
+      <h3>{props.name}</h3>
+      <h6>{props.address}</h6>
+      <h6>{props.tel}</h6>
+      <h6>{props.service}</h6>
       <hr/>
     </div>
   );
+}
+
+Client.propTypes = {
+  name: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  tel: PropTypes.string.isRequired,
+  service: PropTypes.string.isRequired
 }
 
 export default Client
