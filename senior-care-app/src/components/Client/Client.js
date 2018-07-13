@@ -10,7 +10,7 @@ function Client(props){
       <h6>{props.service}</h6>
       <hr/>
     </div>
-  );
+  )
 }
 
 Client.propTypes = {
