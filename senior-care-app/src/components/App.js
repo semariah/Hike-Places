@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import App from './components/App.css'
+import './App.css'
 import ClientList from './Client/ClientList'
 
 
